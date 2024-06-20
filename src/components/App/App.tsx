@@ -9,14 +9,15 @@ import { useEffect } from "react";
 import {ImageModal} from "../ImageModal/ImageModal";
 import { ToastContainer } from "react-toastify";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
+import { SelectedImage } from "../ImageModal/ImageModal";
 import { Image } from "../types";
 
 export default function App() {
-  const [images, setImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [images, setImages] = useState<Image[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {
     if (searchQuery.trim() === "") {

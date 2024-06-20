@@ -1,12 +1,14 @@
 import css from './ImageModal.module.css'
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
-interface SelectedImage {
+export interface SelectedImage {
     urls: {
       full: string;
     };
     alt_description?: string; 
   }
+  
+  
   interface ImageModalProps {
     isOpen: boolean;
     onRequestClose: () => void;

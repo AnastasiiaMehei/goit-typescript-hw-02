@@ -3,5 +3,5 @@ export interface Image {
     small: string;
     large: string;
   };
-  alt_description: string;
+  alt_description?: string;
 }
