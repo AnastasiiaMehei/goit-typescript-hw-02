@@ -1,16 +1,14 @@
 import "./App.module.css";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import { getImages } from "../../api";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loader";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
-import { useEffect } from "react";
 import ImageModal from "../ImageModal/ImageModal";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { ImageGallery } from "../ImageGallery/ImageGallery";
 import { Image } from "../types";
+import { ImageGallery } from "../ImageGallery/ImageGallery";
 
 export default function App() {
   const [images, setImages] = useState<Image[]>([]);
@@ -27,8 +25,8 @@ export default function App() {
       try {
         setIsLoading(true);
         setIsError(false);
-        const data = await getImages(searchQuery, page);
-        setImages((prevState) => [...prevState, ...data]);
+        const data: Image[] = await getImages(searchQuery, page);
+        setImages((prevState) => [...prevState,...data]);
       } catch (error) {
         setIsError(true);
       } finally {
@@ -38,25 +36,25 @@ export default function App() {
     fetchImages();
   }, [page, searchQuery]);
 
-  const handleSearch = async (topic) => {
+  const handleSearch = async (topic: string): Promise<void> => {
     setSearchQuery(topic);
     setPage(1);
     setImages([]);
   };
-  
 
-  const handLoadMore = async () => {
-    setPage(page + 1);
+  const handLoadMore = async (): Promise<void> => {
+    setPage((prevPage) => prevPage + 1);
   };
 
   // модалка
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
   const [modalIsOpen, setIsModalOpen] = useState<boolean>(false);
-  const handleImageClick = (image) => {
+  const handleImageClick = (image: Image): void => {
     setSelectedImage(image);
     setIsModalOpen(true);
   };
-  const closeModal = () => {
+  
+  const closeModal = (): void => {
     setIsModalOpen(false);
   };
 
