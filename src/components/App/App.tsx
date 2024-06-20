@@ -5,7 +5,7 @@ import { getImages } from "../../api";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loader";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
-import ImageModal from "../ImageModal/ImageModal";
+import { ImageModal, SelectedImage } from "../ImageModal/ImageModal";
 import { ToastContainer } from "react-toastify";
 import { Image } from "../types";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
@@ -47,10 +47,17 @@ export default function App() {
   };
 
   // модалка
-  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
+  const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(null);
   const [modalIsOpen, setIsModalOpen] = useState<boolean>(false);
   const handleImageClick = (image: Image): void => {
-    setSelectedImage(image);
+    const transformedImage: SelectedImage = {
+      urls: {
+        full: image.urls.large, 
+      },
+      alt_description: image.alt_description,
+    };
+  
+    setSelectedImage(transformedImage); 
     setIsModalOpen(true);
   };
   

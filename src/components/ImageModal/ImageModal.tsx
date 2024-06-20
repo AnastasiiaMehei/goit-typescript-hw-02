@@ -1,8 +1,19 @@
 import css from './ImageModal.module.css'
 import Modal from 'react-modal';
-Modal.setAppElement('#root');
 
-export default function ImageModal({isOpen, onRequestClose, selectedImage}){
+export interface SelectedImage {
+    urls: {
+      full: string;
+    };
+    alt_description?: string; 
+  }
+  
+  interface ImageModalProps {
+    isOpen: boolean;
+    onRequestClose: () => void;
+    selectedImage: SelectedImage;
+  }
+export const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onRequestClose, selectedImage }) => {
     return(
         <>
         <Modal
