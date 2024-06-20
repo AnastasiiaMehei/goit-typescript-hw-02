@@ -17,24 +17,26 @@ export default function App() {
   const [page, setPage] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  useEffect(() => {
-    if (searchQuery.trim() === "") {
-      return;
+
+useEffect(() => {
+  if (searchQuery.trim() === "") {
+    return;
+  }
+  const fetchImages = async (): Promise<void> => { 
+    try {
+      setIsLoading(true);
+      setIsError(false);
+      const data: Image[] = await getImages(searchQuery, page); 
+      setImages((prevState) => [...prevState,...data]);
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
     }
-    async function fetchImages() {
-      try {
-        setIsLoading(true);
-        setIsError(false);
-        const data: Image[] = await getImages(searchQuery, page);
-        setImages((prevState) => [...prevState,...data]);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchImages();
-  }, [page, searchQuery]);
+  };
+  fetchImages();
+}, [page, searchQuery]); 
+
 
   const handleSearch = async (topic: string): Promise<void> => {
     setSearchQuery(topic);
