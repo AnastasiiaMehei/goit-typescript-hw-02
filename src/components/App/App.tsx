@@ -53,7 +53,7 @@ useEffect(() => {
   const [modalIsOpen, setIsModalOpen] = useState<boolean>(false);
   const handleImageClick = (image: Image): void => {
     const transformedImage: SelectedImage = {
-      urls: {
+      urls: { 
         full: image.urls.large, 
       },
       alt_description: image.alt_description,
