@@ -1,0 +1,17 @@
+.btn {
+  background-color: blue;
+  color: white;
+  border: 1px solid white;
+  border-radius: 3px;
+  display: block;
+  margin: auto;
+  width: 131px;
+  height: 46px;
+  margin-bottom: 20px;
+}
+.btn:focus,
+.btn:hover {
+  background-color: aqua;
+  color: grey;
+  border: 1px solid blue;
+}

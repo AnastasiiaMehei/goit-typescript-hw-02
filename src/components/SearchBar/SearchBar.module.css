@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  justify-content: center;
+  margin-top: 7px;
+  background-color: blue;
+
+  height: 55px;
+}
+.divButton {
+  display: flex;
+  flex-direction: row;
+}
+.div {
+  background-color: blue;
+  height: 75px;
+  display: flex;
+  align-items: center;
+}
+.form {
+  border: 1px solid gray;
+  width: 390px;
+  height: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  background-color: white;
+  margin: 4px;
+  display: block;
+  margin: 0 auto;
+}
+.input {
+  border: none;
+  padding: 15px;
+  width: 100%;
+}
+.btn {
+  border: none;
+  margin: 0;
+  background-color: transparent;
+}
+.span {
+  color: red;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
