@@ -49,7 +49,7 @@ export default function App() {
 
   // модалка
   const [selectedImage, setSelectedImage] = useState(null);
-  const [modalIsOpen, setIsModalOpen] = useState(false);
+  const [modalIsOpen, setIsModalOpen] = useState<boolean>(false);
   const handleImageClick = (image) => {
     setSelectedImage(image);
     setIsModalOpen(true);

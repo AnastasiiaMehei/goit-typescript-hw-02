@@ -1,5 +1,10 @@
 // import css from './ImageCard.module.css'
 export default function ImageCard({image, onClick}) {
+interface Image {
+  urls: string;
+  alt_description: string;
+}
+
       return (
       <div >
       <img src={image.urls.small} alt={image.alt_description} onClick={onClick}/> 
