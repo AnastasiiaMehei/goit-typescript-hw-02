@@ -43,6 +43,7 @@ export default function App() {
     setPage(1);
     setImages([]);
   };
+  
 
   const handLoadMore = async () => {
     setPage(page + 1);
