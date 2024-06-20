@@ -1,8 +1,12 @@
 import css from './ImageGallery.module.css'
 import ImageCard from "../ImageCard/ImageCard";
-export default function ImageGallery({images, onImageClick}) {
-  console.log(images);
-
+import { Image } from '../types';
+import { FC } from 'react';
+interface ImageGalleryProps {
+  images: Image[]; 
+  onImageClick: (image: Image) => void;
+}
+export const ImageGallery: FC<ImageGalleryProps> = ({images, onImageClick}) => {
   return (
     <ul className={css.imageGallery}>
       {images.map((image, index) => (

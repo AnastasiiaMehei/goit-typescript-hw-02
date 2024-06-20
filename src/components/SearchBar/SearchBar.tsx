@@ -4,8 +4,10 @@ import * as Yup from "yup";
 import css from "./SearchBar.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-export default function SearchBar({ onSearch }) {
+interface SearchBarProps {
+  onSearch: (query: string) => void
+}
+export default function SearchBar({ onSearch }: SearchBarProps) {
   const validationSchema = Yup.object().shape({
     query: Yup.string().min(3, "Too Short").max(50, "Too Long"),
   });

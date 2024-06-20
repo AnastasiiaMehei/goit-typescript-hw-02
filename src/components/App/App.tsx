@@ -1,7 +1,6 @@
 import "./App.module.css";
 import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import ImageGallery from "../ImageGallery/ImageGallery";
 import { getImages } from "../../api";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loader";
@@ -10,9 +9,11 @@ import { useEffect } from "react";
 import ImageModal from "../ImageModal/ImageModal";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ImageGallery } from "../ImageGallery/ImageGallery";
+import { Image } from "../types";
 
 export default function App() {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<Image[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
@@ -48,7 +49,7 @@ export default function App() {
   };
 
   // модалка
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [modalIsOpen, setIsModalOpen] = useState<boolean>(false);
   const handleImageClick = (image) => {
     setSelectedImage(image);
